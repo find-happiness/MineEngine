@@ -30,6 +30,8 @@ bool SystemClass::Initialize()
 	if (!m_Input)
 		return	false;
 
+	m_Input->Initialize();
+
 	m_GraphicsClass = new GraphicsClass;
 
 	if (!m_GraphicsClass)
@@ -120,9 +122,11 @@ bool SystemClass::Frame()
 		return false;
 	}
 
-	result =  m_GraphicsClass->Farme();
-
-	return result;
+	result = m_GraphicsClass->Farme();
+	if (!result)
+	{
+		return false;
+	}
 
 }
 
